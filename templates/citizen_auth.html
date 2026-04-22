@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head><script src="https://cdn.tailwindcss.com"></script></head>
+<body class="bg-slate-950 text-white flex items-center justify-center min-h-screen p-6">
+    <div class="bg-white/5 backdrop-blur-xl p-10 rounded-[3rem] border border-green-500/30 w-full max-w-xl">
+        <h2 class="text-4xl font-black text-center mb-2 text-green-500">CITIZEN PORTAL</h2>
+        <p class="text-center text-gray-500 mb-8">Join the movement for a cleaner neighborhood</p>
+        
+        <form action="/auth" method="POST" class="grid grid-cols-2 gap-4">
+            <div class="col-span-2">
+                <input type="text" name="name" placeholder="Full Name" class="w-full bg-black p-4 rounded-2xl border border-white/10">
+            </div>
+            <input type="email" name="email" placeholder="Email" class="w-full bg-black p-4 rounded-2xl border border-white/10" required>
+            <input type="password" name="password" placeholder="Password" class="w-full bg-black p-4 rounded-2xl border border-white/10" required>
+            <input type="text" name="contact" placeholder="Contact Number" class="w-full bg-black p-4 rounded-2xl border border-white/10">
+            <select name="district" class="w-full bg-black p-4 rounded-2xl border border-white/10">
+                <option value="Karur">Karur</option><option value="Chennai">Chennai</option>
+                <option value="Coimbatore">Coimbatore</option><option value="Madurai">Madurai</option>
+            </select>
+            <div class="col-span-2 flex gap-4 mt-4">
+                <button name="action" value="register" class="flex-1 border border-white/20 py-4 rounded-2xl font-bold hover:bg-white/5">Register</button>
+                <button name="action" value="login" class="flex-1 bg-green-500 text-black font-black py-4 rounded-2xl">Login</button>
+            </div>
+        </form>
+        <a href="/" class="block text-center mt-6 text-gray-500 hover:text-white">← Back to Home</a>
+    </div>
+</body>
+</html>

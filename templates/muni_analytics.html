@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .gov-sidebar { background: linear-gradient(180deg, #0f172a 0%, #1e293b 100%); }
+        @media print { .no-print { display: none; } }
+    </style>
+</head>
+<body class="bg-[#020617] text-slate-200">
+    <div class="flex h-screen overflow-hidden">
+        
+        <aside class="w-64 gov-sidebar border-r border-white/10 p-6 flex flex-col no-print">
+            <div class="flex items-center gap-3 mb-10">
+                <div class="w-10 h-10 bg-blue-600 rounded-lg flex items-center justify-center font-bold text-white">TN</div>
+                <h1 class="text-sm font-black leading-tight">MUNICIPAL <br><span class="text-blue-400">ADMINISTRATION</span></h1>
+            </div>
+            <nav class="space-y-4 flex-1">
+                <a href="/dashboard" class="block p-3 text-slate-500 hover:text-white transition">District Monitoring</a>
+                <a href="/municipality/analytics" class="block p-3 bg-blue-600/20 text-blue-400 rounded-xl font-bold">Analytics Reports</a>
+            </nav>
+            <button onclick="window.print()" class="mb-4 p-3 bg-green-600/20 text-green-400 rounded-xl font-bold text-xs uppercase">Download PDF Report</button>
+            <a href="/logout" class="p-4 bg-red-500/10 text-red-500 rounded-2xl text-center font-bold text-xs">LOGOUT SESSION</a>
+        </aside>
+
+        <main class="flex-1 overflow-y-auto p-8">
+            <div class="mb-10">
+                <h2 class="text-3xl font-bold text-white">Analytics & Resolution Gallery</h2>
+                <p class="text-slate-500 text-sm">Reviewing resolved waste reports across all districts.</p>
+            </div>
+
+            <div class="space-y-12">
+                {% for r in reports %}
+                <div class="bg-slate-900/50 border border-white/10 rounded-[3rem] p-8">
+                    <div class="flex justify-between items-center mb-6">
+                        <div>
+                            <h3 class="text-xl font-bold text-blue-400">{{ r.area }} ({{ r.district }})</h3>
+                            <p class="text-xs text-slate-500">Resolved by Supervisor: {{ r.supervisor_name }}</p>
+                        </div>
+                        <span class="px-4 py-1 bg-green-500/20 text-green-400 rounded-full text-[10px] font-black uppercase">Verified Cleared</span>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-3">
+                            <p class="text-[10px] font-bold text-slate-500 uppercase tracking-widest text-center">Before (Citizen Report)</p>
+                            <img src="/static/uploads/{{ r.user_image }}" class="w-full h-64 object-cover rounded-[2rem] border border-white/5 grayscale-[0.5]">
+                            <p class="text-xs text-slate-400 italic text-center">"{{ r.detail_desc }}"</p>
+                        </div>
+
+                        <div class="space-y-3">
+                            <p class="text-[10px] font-bold text-green-500 uppercase tracking-widest text-center">After (Supervisor Proof)</p>
+                            <img src="/static/uploads/{{ r.supervisor_image }}" class="w-full h-64 object-cover rounded-[2rem] border-2 border-green-500/30">
+                            <p class="text-xs text-green-400 font-bold text-center">Status: Spot Sanitized</p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+                {% if not reports %}
+                <div class="text-center py-20 bg-slate-900/20 rounded-[3rem] border border-dashed border-white/10">
+                    <p class="text-slate-500 italic">No cleared reports found for analytics yet.</p>
+                </div>
+                {% endif %}
+            </div>
+        </main>
+    </div>
+</body>
+</html>

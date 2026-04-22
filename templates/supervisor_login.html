@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><script src="https://cdn.tailwindcss.com"></script></head>
+<body class="bg-slate-950 text-white flex items-center justify-center min-h-screen">
+    <div class="bg-slate-900 p-12 rounded-[3rem] border border-yellow-500/30 w-full max-w-md shadow-2xl text-center">
+        <h2 class="text-3xl font-black text-yellow-500 mb-2">SUPERVISOR</h2>
+        <p class="text-gray-500 mb-8">Field Worker Login</p>
+        <form action="/auth" method="POST" class="space-y-4 text-left">
+            <input type="email" name="email" placeholder="Supervisor Email" class="w-full bg-black p-4 rounded-2xl" required>
+            <input type="password" name="password" placeholder="Password" class="w-full bg-black p-4 rounded-2xl" required>
+            <button name="action" value="login" class="w-full bg-yellow-500 text-black font-black py-4 rounded-2xl">Access Task List</button>
+        </form>
+    </div>
+</body>
+</html>
